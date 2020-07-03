@@ -1,0 +1,26 @@
+class Solution {
+public:
+    vector<int> prisonAfterNDays(vector<int>& cells, int N) {
+        vector<int> b = cells;
+        N = (N-1)%14 +1;
+        for(int i=1;i<=N;i++){
+            for(int j=1;j<7;j++){
+                if(b[j-1]==b[j+1]){
+                    cells[j]=1;
+                }else cells[j]=0;
+            }
+            if(i==1){
+                 cells[0]=0;
+                  cells[7]=0;
+            }
+            b=cells;
+            // for(int i=0;i<8;i++){
+            //    // cout<<cells[i]<<" ";
+            //     b[i]=cells[i];
+            // }
+          //  cout<<endl;
+        }
+        
+        return cells;
+    }
+};
