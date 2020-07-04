@@ -1,0 +1,31 @@
+class Solution {
+public:
+    int nthUglyNumber(int n) {
+     int  ugly[n];
+	    ugly[0]=1;
+	    int i2=0,i3=0,i5=0;
+	    int nm2 = ugly[i2]*2;
+	    int nm3 = ugly[i3]*3;
+	    int nm5 = ugly[i5]*5;
+	    int next;
+	    for(int i=1;i<n;i++){
+	        
+	        next = min(min(nm2,nm3),nm5);
+	        ugly[i] = next;
+	        
+	        if(next == nm2){
+	            i2 = i2+1;
+	            nm2 = ugly[i2]*2;
+	        }
+	        if(next == nm3){
+	            i3 = i3+1;
+	            nm3 = ugly[i3]*3;
+	        }
+	        if(next == nm5){
+	            i5 = i5+1;
+	            nm5 = ugly[i5]*5;
+	        }
+	    }
+        return ugly[n-1];
+    }
+};
